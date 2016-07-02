@@ -26,6 +26,21 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void init(Callback onSuccess, Callback onFailure) {
+        //Run code that initializes BugSnag here
         onSuccess.invoke("Hello World!");
     }
+
+
+    @ReactMethod
+    public void setIdentifier(String userId, String email, String fullName, Callback onSuccess, Callback onFailure) {
+        //This gets called whenever setIdentifier is invoked from javascript
+        onSuccess.invoke("User identified!");
+    }
+
+    @ReactMethod
+    public void reportException(String errorMessage, ReadableArray stacktrace, Integer exceptionId, Boolean isFatal, Callback onSuccess, Callback onFailure) {
+        //This gets called whenever a js error gets thrown
+        onSuccess.invoke("Error!");
+    }
+
 }
