@@ -1,40 +1,44 @@
 {
-	name: "react-native-bugsnag",
-	version: "0.0.1",
-	description: "This is a community created Bugsnag sdk for react-native. It consumes the Bugsnag api to report errors from both the react-native (javascript) environment AND the native (Obj-C or Java) environment.",
-	main: "index.js",
-	scripts: {
+	"name": "react-native-bugsnag",
+	"version": "0.0.1",
+	"description": "Community-created Bugsnag package for React Native. It consumes the Bugsnag API to report errors from both the React Native (Javascript) environment AND the native (Obj-C or Java) environment.",
+	"nativePackage": true,
+	"homepage": "https://github.com/joshuapinter/react-native-bugsnag",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/joshuapinter/react-native-bugsnag.git"
 	},
-	keywords: [
-	"react-native",
-	"react-native-bugsnag",
-	"bugsnag",
-	"react-bugsnag",
-	"rnbugsnag",
-	"react-component",
-	"react-native-component",
-	"react",
-	"mobile",
-	"ios",
-	"android",
-	"osx",
-	"macos",
+	"bugs": {
+		"url": "https://github.com/joshuapinter/react-native-bugsnag/issues"
+	},
+	"license": "MIT",
+	"keywords": [
+		"android",
+		"bugsnag",
+		"errors",
+		"exceptions",
+		"ios",
+		"macos",
+		"mobile",
+		"osx",
+		"react",
+		"react-bugsnag",
+		"react-component",
+		"react-native",
+		"react-native-bugsnag",
+		"react-native-component",
+		"rnbugsnag"
 	],
-	contributors: [
+	"contributors": [
 		"Ioannis Kokkinidis <sudoplz@gmail.com> (http://linkedin.com/in/sudoplz/)",
-		"Joshua Pinter <joshuapinter+github@gmail.com>"
+		"Joshua Pinter <joshuapinter+github@gmail.com> (http://about.me/joshuapinter)"
 	],
-	homepage: "https://github.com/joshuapinter/react-native-bugsnag",
-	bugs: {
-	url: "https://github.com/joshuapinter/react-native-bugsnag/issues"
+	"main": "index.js",
+	"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
 	},
-	repository: {
-	type: "git",
-	url: "git://github.com/joshuapinter/react-native-bugsnag.git"
+	"dependencies": {
 	},
-	license: "MIT",
-	dependencies: {
-	},
-	devDependencies: {
+	"devDependencies": {
 	}
 }
