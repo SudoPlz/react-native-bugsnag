@@ -8,11 +8,11 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 
 ### iOS
 
-1. Install Bugsnag into your app according to their **[iOS][ios-installation]** instructions.
+1. Install Bugsnag into your app according to their **[iOS instructions][ios-installation]**.
 
-   Ensure that [Symbolication](#symbolication) is properly setup in your project as well.
+   Ensure that **[Symbolication](#symbolication)** is properly setup in your project as well.
 
-2. In your AppDelegate.m file, add the following code changes:
+2. In your `AppDelegate.m` file, add the following code changes:
 
   a. Import the Bugsnag library:
 
@@ -48,9 +48,9 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 
 ### Android
 
-1. Install Bugsnag into your app according to their **[Android][android-installation]** instructions.
+1. Install Bugsnag into your app according to their **[Android instructions][android-installation]**.
 
-2. _TODO_
+2. **[TODO](#todo)**
 
 
 ## Usage
@@ -68,8 +68,6 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
   ```
 
 
-## API
-
 <!-- | method | parameters (body) | Description | Returns|
 |---------------|-------------------------------------------------|--------------------------------------------------------------|-----|
 | **setIdentifier** | {`userId`:string, `userEmail`: string, `userFullname`: string} |  This function sets the id of the user that we will be logging.| Promise | -->
@@ -78,9 +76,21 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 
 ## Symbolication
 
-This is an important part of the process in order to get the actual method names and line numbers of the exceptions.
+This is an important part of the process in order to get the actual method names and line numbers of the exceptions from iOS.
 
 http://docs.bugsnag.com/platforms/ios-objc/symbolication-guide/
+
+
+## TODO
+
+- [ ] Configure Bugsnag from JS.
+- [ ] Handle different handled exceptions in JS.
+- [ ] Show line numbers (and method names?) in JS errors.
+- [ ] Create some nice graphics for this README.
+- [ ] Test RNPM installation process.
+- [ ] Submit to js.coach and Bugsnag.
+- [ ] Fully integrate with Android.
+
 
 [android-installation]: http://docs.bugsnag.com/platforms/android/#installation
 [ios-installation]:     http://docs.bugsnag.com/platforms/ios-objc/#installation
