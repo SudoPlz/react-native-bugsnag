@@ -1,33 +1,26 @@
 # RNBugsnag
 
-
-###Description:
-This is a react-native module supporting both **iOS** and **Android**, and allows you to monitor crashes using [Bugsnag](https://bugsnag.com/ ).
-
+### Description
+This is a react-native module supporting both **iOS** and **Android**, and allows you to monitor crashes using [Bugsnag](https://bugsnag.com/).
 
 
+### Installation (TODO)
+
+```bash
+npm install -s react-native-bugsnag
+```
 
 
+### Usage
 
-###Installation (TODO):
+```js
+import RNBugsnag from 'react-native-bugsnag'
 
-
-`npm install -s react-native-bugsnag`
-
-
-
-
-###Usage:
+RNBugsnag({ApiKey: "YOUR_API_KEY_FROM_BUGSNAG"})
+```
 
 
-    import RNBugsnag from 'react-native-bugsnag'
-    
-    
-    
-    RNBugsnag({ApiKey: "YOUR_API_KEY_FROM_BUGSNAG"})
-    
-    
-###Api:
+### API
 
 | method | parameters (body) | Description | Returns|
 |---------------|-------------------------------------------------|--------------------------------------------------------------|-----|
