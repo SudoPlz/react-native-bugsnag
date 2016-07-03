@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D72D2EC1C16249000E22EC1 /* RCTRNBugsnag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5D72D2EB1C16249000E22EC1 /* RCTRNBugsnag.h */; };
-		5D72D2EE1C16249000E22EC1 /* RCTRNBugsnag.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D72D2ED1C16249000E22EC1 /* RCTRNBugsnag.m */; };
+		5D72D2EC1C16249000E22EC1 /* RNBugsnag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5D72D2EB1C16249000E22EC1 /* RNBugsnag.h */; };
+		5D72D2EE1C16249000E22EC1 /* RNBugsnag.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D72D2ED1C16249000E22EC1 /* RNBugsnag.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,16 +18,16 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				5D72D2EC1C16249000E22EC1 /* RCTRNBugsnag.h in CopyFiles */,
+				5D72D2EC1C16249000E22EC1 /* RNBugsnag.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5D72D2E81C16249000E22EC1 /* libRCTRNBugsnag.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTRNBugsnag.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D72D2EB1C16249000E22EC1 /* RCTRNBugsnag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTRNBugsnag.h; sourceTree = "<group>"; };
-		5D72D2ED1C16249000E22EC1 /* RCTRNBugsnag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTRNBugsnag.m; sourceTree = "<group>"; };
+		5D72D2E81C16249000E22EC1 /* libRNBugsnag.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNBugsnag.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D72D2EB1C16249000E22EC1 /* RNBugsnag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNBugsnag.h; sourceTree = "<group>"; };
+		5D72D2ED1C16249000E22EC1 /* RNBugsnag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNBugsnag.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +44,7 @@
 		5D72D2DF1C16249000E22EC1 = {
 			isa = PBXGroup;
 			children = (
-				5D72D2EA1C16249000E22EC1 /* RCTRNBugsnag */,
+				5D72D2EA1C16249000E22EC1 /* RNBugsnag */,
 				5D72D2E91C16249000E22EC1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,26 +52,26 @@
 		5D72D2E91C16249000E22EC1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5D72D2E81C16249000E22EC1 /* libRCTRNBugsnag.a */,
+				5D72D2E81C16249000E22EC1 /* libRNBugsnag.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5D72D2EA1C16249000E22EC1 /* RCTRNBugsnag */ = {
+		5D72D2EA1C16249000E22EC1 /* RNBugsnag */ = {
 			isa = PBXGroup;
 			children = (
-				5D72D2EB1C16249000E22EC1 /* RCTRNBugsnag.h */,
-				5D72D2ED1C16249000E22EC1 /* RCTRNBugsnag.m */,
+				5D72D2EB1C16249000E22EC1 /* RNBugsnag.h */,
+				5D72D2ED1C16249000E22EC1 /* RNBugsnag.m */,
 			);
-			path = RCTRNBugsnag;
+			path = RNBugsnag;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5D72D2E71C16249000E22EC1 /* RCTRNBugsnag */ = {
+		5D72D2E71C16249000E22EC1 /* RNBugsnag */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5D72D2F11C16249000E22EC1 /* Build configuration list for PBXNativeTarget "RCTRNBugsnag" */;
+			buildConfigurationList = 5D72D2F11C16249000E22EC1 /* Build configuration list for PBXNativeTarget "RNBugsnag" */;
 			buildPhases = (
 				5D72D2E41C16249000E22EC1 /* Sources */,
 				5D72D2E51C16249000E22EC1 /* Frameworks */,
@@ -81,9 +81,9 @@
 			);
 			dependencies = (
 			);
-			name = RCTRNBugsnag;
+			name = RNBugsnag;
 			productName = RCTRNBugsnag;
-			productReference = 5D72D2E81C16249000E22EC1 /* libRCTRNBugsnag.a */;
+			productReference = 5D72D2E81C16249000E22EC1 /* libRNBugsnag.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -100,7 +100,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5D72D2E31C16249000E22EC1 /* Build configuration list for PBXProject "RCTRNBugsnag" */;
+			buildConfigurationList = 5D72D2E31C16249000E22EC1 /* Build configuration list for PBXProject "RNBugsnag" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5D72D2E71C16249000E22EC1 /* RCTRNBugsnag */,
+				5D72D2E71C16249000E22EC1 /* RNBugsnag */,
 			);
 		};
 /* End PBXProject section */
@@ -122,7 +122,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D72D2EE1C16249000E22EC1 /* RCTRNBugsnag.m in Sources */,
+				5D72D2EE1C16249000E22EC1 /* RNBugsnag.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +220,7 @@
 					"$(SRCROOT)/../../React/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RNBugsnag;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -236,7 +236,7 @@
 					"$(SRCROOT)/node_modules/react-native/React/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RNBugsnag;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -244,7 +244,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5D72D2E31C16249000E22EC1 /* Build configuration list for PBXProject "RCTRNBugsnag" */ = {
+		5D72D2E31C16249000E22EC1 /* Build configuration list for PBXProject "RNBugsnag" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D72D2EF1C16249000E22EC1 /* Debug */,
@@ -253,7 +253,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5D72D2F11C16249000E22EC1 /* Build configuration list for PBXNativeTarget "RCTRNBugsnag" */ = {
+		5D72D2F11C16249000E22EC1 /* Build configuration list for PBXNativeTarget "RNBugsnag" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D72D2F21C16249000E22EC1 /* Debug */,

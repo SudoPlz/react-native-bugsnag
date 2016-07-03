@@ -1,4 +1,4 @@
-#import "RCTRNBugsnag.h"
+#import "RNBugsnag.h"
 //#import "Bugsnag.h"
 
 
