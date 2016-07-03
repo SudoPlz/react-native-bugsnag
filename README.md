@@ -1,8 +1,8 @@
-# RNBugsnag
+# React Native Bugsnag
 
-### Description
-This is a react-native module supporting both **iOS** and **Android**, and allows you to monitor crashes using [Bugsnag](https://bugsnag.com/).
+Easily add **[Bugsnag](https://bugsnag.com/)** exception monitoring support to your React Native application.
 
+_Although this is not affiliated with Bugsnag directly, we do have [their support](https://twitter.com/bugsnag/status/749027008085045252)._
 
 ### Installation (TODO)
 
@@ -25,3 +25,11 @@ RNBugsnag({ApiKey: "YOUR_API_KEY_FROM_BUGSNAG"})
 | method | parameters (body) | Description | Returns|
 |---------------|-------------------------------------------------|--------------------------------------------------------------|-----|
 | **setIdentifier** | {`userId`:string, `userEmail`: string, `userFullname`: string} |  This function sets the id of the user that we will be logging.| Promise |
+
+
+
+### Bugsnag Symbolication
+
+This is an important part of the process in order to get the actual method names and line numbers of the exceptions.
+
+http://docs.bugsnag.com/platforms/ios-objc/symbolication-guide/
