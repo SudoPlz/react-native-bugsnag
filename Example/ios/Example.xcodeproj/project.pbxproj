@@ -24,6 +24,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		D32130FD1D29A52B000E0B23 /* Bugsnag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32130EB1D29A3D0000E0B23 /* Bugsnag.framework */; };
+		D32131771D29C0DD000E0B23 /* libRNBugsnag.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D32131761D29C0A4000E0B23 /* libRNBugsnag.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,13 @@
 			remoteGlobalIDString = EDF2BF211CCF15AD004BADF4;
 			remoteInfo = KSCrash_static;
 		};
+		D32131751D29C0A4000E0B23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D32131711D29C0A4000E0B23 /* RNBugsnag.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D72D2E81C16249000E22EC1;
+			remoteInfo = RNBugsnag;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -172,6 +180,7 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		D32130E51D29A3D0000E0B23 /* Bugsnag.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Bugsnag.xcodeproj; path = "Example/bugsnag-cocoa-5.2.1/iOS/Bugsnag.xcodeproj"; sourceTree = "<group>"; };
 		D32130EE1D29A4F2000E0B23 /* KSCrash-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "KSCrash-iOS.xcodeproj"; path = "Example/KSCrash-master/iOS/KSCrash-iOS.xcodeproj"; sourceTree = "<group>"; };
+		D32131711D29C0A4000E0B23 /* RNBugsnag.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBugsnag.xcodeproj; path = "../node_modules/react-native-bugsnag/ios/RNBugsnag.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D32131771D29C0DD000E0B23 /* libRNBugsnag.a in Frameworks */,
 				D32130FD1D29A52B000E0B23 /* Bugsnag.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -310,6 +320,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D32131711D29C0A4000E0B23 /* RNBugsnag.xcodeproj */,
 				D32130EE1D29A4F2000E0B23 /* KSCrash-iOS.xcodeproj */,
 				D32130E51D29A3D0000E0B23 /* Bugsnag.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -371,6 +382,14 @@
 				D32130F81D29A4F3000E0B23 /* KSCrashTests.xctest */,
 				D32130FA1D29A4F3000E0B23 /* KSCrash.framework */,
 				D32130FC1D29A4F3000E0B23 /* KSCrash.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D32131721D29C0A4000E0B23 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D32131761D29C0A4000E0B23 /* libRNBugsnag.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -488,6 +507,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = D32131721D29C0A4000E0B23 /* Products */;
+					ProjectRef = D32131711D29C0A4000E0B23 /* RNBugsnag.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -611,6 +634,13 @@
 			remoteRef = D32130FB1D29A4F3000E0B23 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		D32131761D29C0A4000E0B23 /* libRNBugsnag.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNBugsnag.a;
+			remoteRef = D32131751D29C0A4000E0B23 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -730,6 +760,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native-bugsnag/ios/RNBugsnag",
 				);
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -751,6 +782,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/react-native-bugsnag/ios/RNBugsnag",
 				);
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

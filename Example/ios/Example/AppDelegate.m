@@ -8,19 +8,17 @@
  */
 
 #import "AppDelegate.h"
+#import "RCTBridgeModule.h"
+
 
 #import "RCTRootView.h"
-#import <Bugsnag/Bugsnag.h>  // Add this line.
+#import "RNBugsnag.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   
-  
-  
-  [Bugsnag startBugsnagWithApiKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BUGSNAG_API_KEY"]]; // Add this line.
-
 
   
   NSURL *jsCodeLocation;
@@ -62,7 +60,7 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  
+  [RNBugsnag init];
   
   return YES;
 }

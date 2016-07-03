@@ -8,17 +8,25 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 
 ### iOS
 
-1. Install Bugsnag into your app according to their **[iOS instructions][ios-installation]**.
+1. Install the official iOS Bugsnag sdk into your app according to their **[iOS instructions][ios-installation]**.
 	(note: We did not add KSCrash.framework (step 4) to our native project at all.)
 
    Ensure that **[Symbolication](#symbolication)** is properly setup in your project as well.
 
-2. In your `AppDelegate.m` file, add the following code changes:
+2. Install the React Native Bugsnag package:
 
-  a. Import the Bugsnag library:
+  ```bash
+  npm install --save react-native-bugsnag
+  ```
+
+  _(Make sure to restart your package manager afterwards.)_
+  
+3. In your `AppDelegate.m` file, add the following code changes:
+
+  a. Import our RNBugsnag library:
 
   ```objective-c
-  #import <Bugsnag/Bugsnag.h>  // Add this line.
+  #import "RNBugsnag.h"  // Add this line.
 
   @implementation AppDelegate
   ```
@@ -33,7 +41,7 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 	<string>whatever_your_api_key_is</string>
 	```
 
-  c. Initialize Bugsnag inside of `didFinishLaunchingWithOptions`:
+  c. Initialize RNBugsnag inside of `didFinishLaunchingWithOptions`:
   
 
   ```objective-c
@@ -42,18 +50,11 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 
     // ... other code
 
-    [Bugsnag startBugsnagWithApiKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BUGSNAG_API_KEY"]]; // Add this line AS IT IS.
+    [RNBugsnag init];	//initialize it
 
   }
   ```
 
-3. Install the React Native Bugsnag package:
-
-  ```bash
-  npm install --save react-native-bugsnag
-  ```
-
-  _(Make sure to restart your package manager afterwards.)_
 
 
 ### Android
@@ -78,7 +79,7 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 
 
   ```js
-  Bugsnag();
+  Bugsnag();	//or Bugsnag({identifier:{userId: "aUserId", userEmail:"anEmail@domain.com", userFullname:"aFullName"}})
   ```
 
 Congratulations!! 

@@ -18,6 +18,13 @@ import RNBugsnag from "react-native-bugsnag";
 
 
 export default class Example extends Component {
+
+  constructor(props){
+    super(props);
+    // console.log(parseErrorStack());
+    RNBugsnag();  //init so that we start listening to js errors
+  }
+
   render() {
     return (
       <View style={styles.container}>

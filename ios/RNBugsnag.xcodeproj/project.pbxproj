@@ -93,7 +93,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0710;
-				ORGANIZATIONNAME = "Atticus White";
+				ORGANIZATIONNAME = SudoPlzNJoshuaPinter;
 				TargetAttributes = {
 					5D72D2E71C16249000E22EC1 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -212,32 +212,34 @@
 		5D72D2F21C16249000E22EC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../react-native/React/**",
-					"$(SRCROOT)/node_modules/react-native/React",
-					"$(SRCROOT)/../../React/**",
+					"${SRCROOT}/../../react-native/React/**",
+					"${SRCROOT}/../node_modules/react-native/React/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNBugsnag;
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		5D72D2F31C16249000E22EC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../React/**",
-					"$(SRCROOT)/../../react-native/React/**",
-					"$(SRCROOT)/node_modules/react-native/React/**",
+					"${SRCROOT}/../../react-native/React/**",
+					"${SRCROOT}/../node_modules/react-native/React/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNBugsnag;
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
