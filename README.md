@@ -9,6 +9,7 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 ### iOS
 
 1. Install Bugsnag into your app according to their **[iOS instructions][ios-installation]**.
+	(note: We did not add KSCrash.framework (step 4) to our native project at all.)
 
    Ensure that **[Symbolication](#symbolication)** is properly setup in your project as well.
 
@@ -22,17 +23,26 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
   @implementation AppDelegate
   ```
 
-  b. Initialize Bugsnag with your API key inside of `didFinishLaunchingWithOptions`:
+  b. Add your BUSNAG Api Key inside the Info.Plist like so:
+  
+  	Add a new entry with a key of: `BUGSNAG_API_KEY` and a value of your Bugsnag API KEY ([Usually found within your project here](https://bugsnag.com/settings/)).
+  	Opening the Info.Plist with a text editor your addition should look like this:
+  	
+  	```
+  	<key>BUGSNAG_API_KEY</key>
+	<string>whatever_your_api_key_is</string>
+	```
+
+  c. Initialize Bugsnag inside of `didFinishLaunchingWithOptions`:
+  
 
   ```objective-c
   - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+  {
 
-  // ... other code
+    // ... other code
 
-  [Bugsnag startBugsnagWithApiKey:@"your-api-key-goes-here"]; // Add this line.
-
-  // ... other code
+    [Bugsnag startBugsnagWithApiKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BUGSNAG_API_KEY"]]; // Add this line AS IT IS.
 
   }
   ```
@@ -55,18 +65,40 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 
 ## Usage
 
-1. Include React Native Bugsnag in your React Native app:
+
+#### Unhandled errors (Automatic dispatch):
+1. Include React Native Bugsnag in your React Native app:  
 
   ```js
-  var Bugsnag = require('react-native-bugsnag');
+  import Bugsnag from 'react-native-bugsnag';
   ```
+ 
 
-2. Test out manually creating an exception with the following:
+2. Anywhere in the code:
+
 
   ```js
-  Bugsnag.notify("TestExceptionName", "TestExceptionReason", null);
+  Bugsnag();
   ```
 
+Congratulations!! 
+
+At that point you have basic error reporting functionality working. Any unhandled javascript or native errors thrown will be reported to Bugsnag.
+
+
+#### Handled errors (Manual dispatch):
+
+You can manually create an exception using the following command:
+
+  ```js
+  Bugsnag.notify("TestExceptionName", "TestExceptionReason", "error");
+  ```
+
+The third parameter is the severity of the notification, it can be one of the following:
+
+- "error"
+- "warning"
+- "info"
 
 <!-- | method | parameters (body) | Description | Returns|
 |---------------|-------------------------------------------------|--------------------------------------------------------------|-----|
