@@ -78,14 +78,24 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 	project(':react-native-bugsnag').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-bugsnag/android')
 	```
 
-
-2. Go to your `manifest.xml` and add the following line within the application tag replacing `YOUR_API_KEY`:
+2. Go to your app.gradle and add the following line in the end:
+	```java
+	dependencies {
+	    compile fileTree(dir: 'libs', include: ['*.jar'])
+	    compile 'com.android.support:appcompat-v7:23.0.1'
+	    compile 'com.facebook.react:react-native:+'
+	    //...whatever code
+	
+	    compile project(':react-native-bugsnag')	//<--Add this line
+	}
+	```
+3. Go to your `manifest.xml` and add the following line within the application tag replacing `YOUR_API_KEY`:
 
 	```
 	<meta-data android:name="com.bugsnag.android.API_KEY" android:value="YOUR_API_KEY"/>
 	```
 	
-3. Go to your `MainActivity.java` and add the following code:
+4. Go to your `MainActivity.java` and add the following code:
 
 	```
 	import com.pintersudoplz.rnbugsnag.RNBugsnagPackage;
@@ -156,13 +166,13 @@ http://docs.bugsnag.com/platforms/ios-objc/symbolication-guide/
 
 ## TODO
 
-- [ ] Configure Bugsnag from JS.
+- [x] Configure Bugsnag from JS.
 - [ ] Handle different handled exceptions in JS.
-- [ ] Show line numbers (and method names?) in JS errors.
+- [x] Show line numbers (and method names?) in JS errors.
 - [ ] Create some nice graphics for this README.
 - [ ] Test RNPM installation process.
 - [ ] Submit to js.coach and Bugsnag.
-- [ ] Fully integrate with Android.
+- [x] Fully integrate with Android.
 
 
 [android-installation]: http://docs.bugsnag.com/platforms/android/#installation
