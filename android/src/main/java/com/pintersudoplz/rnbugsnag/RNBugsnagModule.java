@@ -1,18 +1,28 @@
 package com.pintersudoplz.rnbugsnag;
 
 import android.content.Context;
+import android.util.Log;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableNativeArray;
+
+import com.facebook.react.bridge.Promise;
+
 
 //BUGSNAG ANDROID API HERE : http://docs.bugsnag.com/platforms/android/#installation
 
-// import com.bugsnag.android.Bugsnag;
-// import com.bugsnag.android.MetaData;
-// import com.bugsnag.android.Severity;
-
+import com.bugsnag.android.Bugsnag;
+import com.bugsnag.android.MetaData;
+import com.bugsnag.android.Severity;
 
 class RNBugsnagModule extends ReactContextBaseJavaModule {
     private Context context;
@@ -20,6 +30,7 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
     public RNBugsnagModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.context = reactContext;
+        Bugsnag.init(reactContext);
     }
 
     /**
@@ -32,32 +43,24 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void init(Callback onSuccess, Callback onFailure) {
-        //Run code that initializes BugSnag here
-        onSuccess.invoke("Hello World!");
-    }
-
-
-    @ReactMethod
-    public void setIdentifier(String userId, String email, String fullName, Callback onSuccess, Callback onFailure) {
+    public void setIdentifier(String userId, String email, String fullName, Promise promise) {
         //This gets called whenever setIdentifier is invoked from javascript
         
-        // Bugsnag.setUser(userId, email, fullName);
+        Bugsnag.setUser(userId, email, fullName);
 
-        onSuccess.invoke("User identified!");
+        promise.resolve("Done!");
     }
 
     @ReactMethod
-    public void reportException(String errorMessage, ReadableArray stacktrace, Integer exceptionId, Boolean isFatal, Callback onSuccess, Callback onFailure) {
+    public void reportException(String errorMessage, ReadableArray stacktrace, Integer exceptionId, ReadableMap otherData, Boolean isFatal, Promise promise) {
         //This gets called whenever a js error gets thrown
 
-
-        Error error = new Error(title);
-        error.setStackTrace(stackTraceToStackTraceElement(stacktrace));
+        ArrayList<Object> stack = ((ReadableNativeArray ) stacktrace).toArrayList();
+        Error error = new Error(errorMessage);
+        error.setStackTrace(stackTraceToStackTraceElement(stack));
 
         MetaData metaData = new MetaData();
-        metaData.addToTab("Custom", "Stacktrace", stackTraceToString(stacktrace));
-
+        metaData.addToTab("Custom", "Stacktrace", stackTraceToString(stack));
 
         if(isFatal){
             Bugsnag.notify(error, Severity.ERROR, metaData);
@@ -68,7 +71,7 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
 
 
 
-        onSuccess.invoke("Error!");
+        promise.resolve("Done!");
     }
 
 
@@ -80,33 +83,33 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
 
 
 
-    private StackTraceElement[] stackTraceToStackTraceElement(ReadableArray stack) {
+    private StackTraceElement[] stackTraceToStackTraceElement(ArrayList<Object> stack) {
         StackTraceElement[] stackTraceElements = new StackTraceElement[stack.size()];
         for (int i = 0; i < stack.size(); i++) {
-            ReadableMap frame = stack.getMap(i);
+            HashMap<String, Object> frame = (HashMap<String, Object>) stack.get(i);
             stackTraceElements[i] = new StackTraceElement(
                     "ReactJS",
-                    frame.getString("methodName"),
-                    new File(frame.getString("file")).getName(),
-                    frame.getInt("lineNumber")
+                    (String) frame.get("methodName"),
+                    new File((String) frame.get("file")).getName(),
+                    (Integer) ((Double) frame.get("lineNumber")).intValue()
             );
         }
         return stackTraceElements;
     }
 
-     private String stackTraceToString(ReadableArray stack) {
+     private String stackTraceToString(ArrayList<Object> stack) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < stack.size(); i++) {
-            ReadableMap frame = stack.getMap(i);
-            stringBuilder.append(frame.getString("methodName"));
+            HashMap<String, Object> frame = (HashMap<String, Object>) stack.get(i);
+            stringBuilder.append((String) frame.get("methodName"));
             stringBuilder.append("\n    ");
-            stringBuilder.append(new File(frame.getString("file")).getName());
+            stringBuilder.append(new File((String) frame.get("file")).getName());
             stringBuilder.append(":");
-            stringBuilder.append(frame.getInt("lineNumber"));
-            if (frame.hasKey("column") && !frame.isNull("column")) {
+            stringBuilder.append( (Integer) ((Double) frame.get("lineNumber")).intValue());
+            if (frame.containsKey("column") && frame.get("column")!=null) {
                 stringBuilder
                         .append(":")
-                        .append(frame.getInt("column"));
+                        .append((Integer) ((Double) frame.get("column")).intValue());
             }
             stringBuilder.append("\n");
         }

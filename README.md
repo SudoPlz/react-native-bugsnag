@@ -69,9 +69,39 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 
 ### Android
 
-1. Install Bugsnag into your app according to their **[Android instructions][android-installation]**.
+1. Go to your settings.gradle and add the following lines after 
+ 	
+ 	```java
+ 	//somewhere after include ':app' add the following 2 lines
+ 	
+	include ':react-native-bugsnag'
+	project(':react-native-bugsnag').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-bugsnag/android')
+	```
 
-2. **[TODO](#todo)**
+
+2. Go to your `manifest.xml` and add the following line within the application tag replacing `YOUR_API_KEY`:
+
+	```
+	<meta-data android:name="com.bugsnag.android.API_KEY" android:value="YOUR_API_KEY"/>
+	```
+	
+3. Go to your `MainActivity.java` and add the following code:
+
+	```
+	import com.pintersudoplz.rnbugsnag.RNBugsnagPackage;
+	```
+	and then within your `getPackages` add the line with the comment
+	
+	```java
+	@Override
+    protected List<ReactPackage> getPackages() {
+	    // ...whatever code
+	    return Arrays.<ReactPackage>asList(
+            new MainReactPackage(),            
+            new RNBugsnagPackage()  //add this line
+        );
+    }
+	```
 
 
 ## Usage
