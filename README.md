@@ -26,9 +26,11 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
   a. Import our RNBugsnag library:
 
   ```objective-c
-  #import "RNBugsnag.h"  // Add this line.
+  #import <RNBugsnag/RNBugsnag.h>  // Add this line.
 
   @implementation AppDelegate
+    
+    // ... other code
   ```
 
   b. Add your BUSNAG Api Key inside the Info.Plist like so:
