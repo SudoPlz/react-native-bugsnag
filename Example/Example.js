@@ -9,7 +9,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 
 
@@ -42,7 +43,7 @@ export default class Example extends Component {
           throw new Error("Javascript error test successful!")
         }}>
           <Text style={styles.buttonText}>
-            Test crash
+            Test crash {Platform.OS}
           </Text>
         </TouchableOpacity>
 

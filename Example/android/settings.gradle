@@ -1,3 +1,5 @@
 rootProject.name = 'Example'
 
 include ':app'
+include ':react-native-bugsnag'
+project(':react-native-bugsnag').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-bugsnag/android')

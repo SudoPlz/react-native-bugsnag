@@ -4,6 +4,9 @@ import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 
+import com.pintersudoplz.rnbugsnag.RNBugsnagPackage;
+
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +20,6 @@ public class MainActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "Example";
     }
-
     /**
      * Returns whether dev mode should be enabled.
      * This enables e.g. the dev menu.
@@ -34,7 +36,8 @@ public class MainActivity extends ReactActivity {
     @Override
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
-            new MainReactPackage()
+            new MainReactPackage(),
+            new RNBugsnagPackage()
         );
     }
 }
