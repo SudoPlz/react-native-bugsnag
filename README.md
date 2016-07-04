@@ -41,7 +41,12 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 	<string>whatever_your_api_key_is</string>
 	```
 
-  c. Initialize RNBugsnag inside of `didFinishLaunchingWithOptions`:
+  c. Drag and drop the `./node_modules/react-native-bugsnag/ios/RNBugsnag.xcodeproj within your Libraries group in your Xcode project`
+  
+  d. Go to your Project-->Target-->Build Settings--> Header Search Paths and add the following line at the end:
+  `$(SRCROOT)/../node_modules/react-native-bugsnag/ios/RNBugsnag`
+
+  e. Initialize RNBugsnag inside of `didFinishLaunchingWithOptions`:
   
 
   ```objective-c
@@ -54,7 +59,10 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 
   }
   ```
-
+  
+  f. Enjoy!
+  
+  
 
 
 ### Android
