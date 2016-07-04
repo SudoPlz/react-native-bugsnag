@@ -45,8 +45,10 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
   
   d. Go to your Project-->Target-->Build Settings--> Header Search Paths and add the following line at the end:
   `$(SRCROOT)/../node_modules/react-native-bugsnag/ios/RNBugsnag`
-
-  e. Initialize RNBugsnag inside of `didFinishLaunchingWithOptions`:
+  
+  e. Go to your Project-->Target-->General-->Linked Frameworks and Libraries and add libRNBugsnag.a to the list.
+  
+  f. Initialize RNBugsnag inside of `didFinishLaunchingWithOptions`:
   
 
   ```objective-c
