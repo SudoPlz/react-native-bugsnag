@@ -131,13 +131,31 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 
 
   ```js
-  Bugsnag();	//or Bugsnag({identifier:{userId: "aUserId", userEmail:"anEmail@domain.com", userFullname:"aFullName"}})
+  Bugsnag();
   ```
 
 Congratulations!! 
 
 At that point you have basic error reporting functionality working. Any unhandled javascript or native errors thrown will be reported to Bugsnag.
 
+
+
+### API
+
+#### Things you can pass to the constructor:
+
+  - You can suppress all the outgoing Error reports to bugsnag by setting `suppressDevErrors` to true and passing it to the constructor, like so:
+
+  ```js
+    Bugsnag({suppressDevErrors:true});
+  ```
+  
+  - You can set identification data for the current user while initiating BugSnag by passing the `identifier` object to the constructor, like so:
+  
+  ```js
+    Bugsnag({identifier:{userId: "aUserId", userEmail:"anEmail@domain.com", userFullname:"aFullName"}})
+  ```
+  
 
 #### Handled errors (Manual dispatch):
 
