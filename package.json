@@ -11,6 +11,11 @@
 	"bugs": {
 		"url": "https://github.com/joshuapinter/react-native-bugsnag/issues"
 	},
+	"rnpm": {
+	    "android": {
+	      "packageInstance": "new RNBugsnagPackage()"
+	    }
+	  },
 	"license": "MIT",
 	"keywords": [
 		"android",
