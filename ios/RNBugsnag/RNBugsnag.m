@@ -84,7 +84,7 @@ RCT_EXPORT_METHOD(reportException:(NSString *)errorMessage
                                };
 
     NSMutableDictionary *allErrorData = [errorData mutableCopy];
-    [allErrorData addEntriesFromDictionary:@{@"Stacktrace": [stringFrameArray componentsJoinedByString:@"\n"]}];
+    [allErrorData addEntriesFromDictionary:@{@"jsStacktrace": [stringFrameArray componentsJoinedByString:@"\n"]}];
 
     NSString* severity;
     if(fatal){
