@@ -11,7 +11,7 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(notify:(NSString *)exceptionTitle
                   reason:(NSString *)exceptionReason
-                  withSeverity:(NSDictionary *)severity
+                  withSeverity:(NSString *)severity
                   andOtherData:(NSDictionary *) otherData
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)

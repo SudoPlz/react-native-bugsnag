@@ -54,13 +54,15 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void reportException(String errorMessage, ReadableArray stacktrace, Integer exceptionId, ReadableMap otherData, Boolean isFatal, Promise promise) {
         //This gets called whenever a js error gets thrown
-
-//        ArrayList<Object> stack = ((ReadableNativeArray ) stacktrace).toArrayList();
+        
+        BugsnagStack st = new BugsnagStack(stacktrace);
+        
         Error error = new Error(errorMessage);
-        error.setStackTrace(stackTraceToStackTraceElement(stacktrace));
+        error.setStackTrace(st.getStackTrace());
 
         MetaData metaData = new MetaData();
         metaData.addToTab("Custom", "exceptionId", exceptionId);
+        metaData.addToTab("Custom", "jsStacktrace", st.getStackTraceStr());
 
         if(isFatal){
             Bugsnag.notify(error, Severity.ERROR, metaData);
@@ -74,79 +76,47 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
         promise.resolve("Done!");
     }
 
+}
 
 
 
+class BugsnagStack {
+    private StackTraceElement[] stackTrace;
+    private String stackStr;
 
-
-
-    private StackTraceElement[] stackTraceToStackTraceElement(ReadableArray stack) {
-        StackTraceElement[] stackTraceElements = new StackTraceElement[stack.size()];
+    public BugsnagStack(ReadableArray stack) {
+        super();
+        stackTrace = new StackTraceElement[stack.size()];
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < stack.size(); i++) {
             ReadableMap frame = stack.getMap(i);
-            stackTraceElements[i] = new StackTraceElement(
+            stackTrace[i] = new StackTraceElement(
                     "ReactJS",
                     frame.getString("methodName"),
                     new File(frame.getString("file")).getName(),
                     frame.getInt("lineNumber")
             );
+            stringBuilder.append(frame.getString("methodName"));
+            stringBuilder.append("\n    ");
+            stringBuilder.append(new File(frame.getString("file")).getName());
+            stringBuilder.append(":");
+            stringBuilder.append(frame.getInt("lineNumber"));
+            if (frame.hasKey("column") && !frame.isNull("column")) {
+                stringBuilder
+                        .append(":")
+                        .append(frame.getInt("column"));
+            }
+            stringBuilder.append("\n");
         }
-        return stackTraceElements;
+        stackStr = stringBuilder.toString();
     }
 
-//    private String stackTraceToString(ReadableArray stack) {
-//        StringBuilder stringBuilder = new StringBuilder();
-//        for (int i = 0; i < stack.size(); i++) {
-//            ReadableMap frame = stack.getMap(i);
-//            stringBuilder.append(frame.getString("methodName"));
-//            stringBuilder.append("\n    ");
-//            stringBuilder.append(new File(frame.getString("file")).getName());
-//            stringBuilder.append(":");
-//            stringBuilder.append(frame.getInt("lineNumber"));
-//            if (frame.hasKey("column") && !frame.isNull("column")) {
-//                stringBuilder
-//                        .append(":")
-//                        .append(frame.getInt("column"));
-//            }
-//            stringBuilder.append("\n");
-//        }
-//        return stringBuilder.toString();
-//    }
+    public StackTraceElement[] getStackTrace(){
+        return stackTrace;
+    }
 
-
-
-
-//    private StackTraceElement[] stackTraceToStackTraceElement(ArrayList<Object> stack) {
-//        StackTraceElement[] stackTraceElements = new StackTraceElement[stack.size()];
-//        for (int i = 0; i < stack.size(); i++) {
-//            HashMap<String, Object> frame = (HashMap<String, Object>) stack.get(i);
-//            stackTraceElements[i] = new StackTraceElement(
-//                    "ReactJS",
-//                    (String) frame.get("methodName"),
-//                    new File((String) frame.get("file")).getName(),
-//                    (Integer) ((Double) frame.get("lineNumber")).intValue()
-//            );
-//        }
-//        return stackTraceElements;
-//    }
-//
-//     private String stackTraceToString(ArrayList<Object> stack) {
-//        StringBuilder stringBuilder = new StringBuilder();
-//        for (int i = 0; i < stack.size(); i++) {
-//            HashMap<String, Object> frame = (HashMap<String, Object>) stack.get(i);
-//            stringBuilder.append((String) frame.get("methodName"));
-//            stringBuilder.append("\n    ");
-//            stringBuilder.append(new File((String) frame.get("file")).getName());
-//            stringBuilder.append(":");
-//            stringBuilder.append( (Integer) ((Double) frame.get("lineNumber")).intValue());
-//            if (frame.containsKey("column") && frame.get("column")!=null) {
-//                stringBuilder
-//                        .append(":")
-//                        .append((Integer) ((Double) frame.get("column")).intValue());
-//            }
-//            stringBuilder.append("\n");
-//        }
-//        return stringBuilder.toString();
-//    }
+    public String getStackTraceStr(){
+        return stackStr;
+    }
 
 }
