@@ -9,14 +9,15 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 ### iOS
 
 1. Install the official iOS Bugsnag sdk into your app according to their **[iOS instructions][ios-installation]**.
-	(note: We did not add KSCrash.framework (step 4) to our native project at all.)
 
    Ensure that **[Symbolication](#symbolication)** is properly setup in your project as well.
+   
+   I used the `carthage` way and ended up with a `Bugsnag.framework` file.
 
 2. Install the React Native Bugsnag package:
 
   ```bash
-  npm install --save react-native-bugsnag
+  rnpm install --save react-native-bugsnag
   ```
 
   _(Make sure to restart your package manager afterwards.)_
@@ -33,24 +34,7 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
     // ... other code
   ```
 
-  b. Add your BUSNAG Api Key inside the Info.Plist like so:
-  
-  	Add a new entry with a key of: `BUGSNAG_API_KEY` and a value of your Bugsnag API KEY ([Usually found within your project here](https://bugsnag.com/settings/)).
-  	Opening the Info.Plist with a text editor your addition should look like this:
-  	
-  	```
-  	<key>BUGSNAG_API_KEY</key>
-	<string>whatever_your_api_key_is</string>
-	```
-
-  c. Drag and drop the `./node_modules/react-native-bugsnag/ios/RNBugsnag.xcodeproj within your Libraries group in your Xcode project`
-  
-  d. Go to your Project-->Target-->Build Settings--> Header Search Paths and add the following line at the end:
-  `$(SRCROOT)/../node_modules/react-native-bugsnag/ios/RNBugsnag`
-  
-  e. Go to your Project-->Target-->General-->Linked Frameworks and Libraries and add libRNBugsnag.a to the list.
-  
-  f. Initialize RNBugsnag inside of `didFinishLaunchingWithOptions`:
+  b. Initialize RNBugsnag inside of `didFinishLaunchingWithOptions`:
   
 
   ```objective-c
@@ -64,7 +48,28 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
   }
   ```
   
-  f. Enjoy!
+  c. Add your BUSNAG Api Key inside the Info.Plist like so:
+  
+  	Add a new entry with a key of: `BUGSNAG_API_KEY` and a value of your Bugsnag API KEY ([Usually found within your project here](https://bugsnag.com/settings/)).
+  	Opening the `Info.Plist` with a text editor your addition should look like this:
+  	
+  	```
+  	<key>BUGSNAG_API_KEY</key>
+	<string>whatever_your_api_key_is</string>
+	```
+  
+  d. Add `Bugsnag` to the RNBugsnag library. I did this by dragging the `Bugsnag.framework` I made in step 1 to my RNBugsnag module target.
+  
+
+#### By that point you should be ok
+If you still want to check if things went well, 
+
+- You should have the `RNBugsnag.xcodeproj` within your main project (as a direct dependency coming from `./node_modules/react-native-bugsnag/ios/RNBugsnag.xcodeproj`)
+- You should have `$(SRCROOT)/../node_modules/react-native-bugsnag/ios/RNBugsnag` within your Project-->Target-->Build Settings--> Header Search Paths.
+- You should have `libRNBugsnag.a` linked to your project, check that on Project-->Target-->General-->Linked Frameworks and Libraries and see if you can find `libRNBugsnag.a`
+
+Enjoy!
+
   
   
 
@@ -190,7 +195,7 @@ http://docs.bugsnag.com/platforms/ios-objc/symbolication-guide/
 - [ ] Handle different handled exceptions in JS.
 - [x] Show line numbers (and method names?) in JS errors.
 - [ ] Create some nice graphics for this README.
-- [ ] Test RNPM installation process.
+- [x] Test RNPM installation process.
 - [ ] Submit to js.coach and Bugsnag.
 - [x] Fully integrate with Android.
 
