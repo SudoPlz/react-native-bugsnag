@@ -13,9 +13,13 @@
 	},
 	"rnpm": {
 	    "android": {
-	      "packageInstance": "new RNBugsnagPackage()"
-	    }
-	  },
+	    	"packageInstance": "new RNBugsnagPackage()"
+	    },
+	    "ios": {
+			"project": "ios/RNBugsnag.xcodeproj",
+			"sharedLibraries": ["RNBugsnag"]
+		}
+	},
 	"license": "MIT",
 	"keywords": [
 		"android",
