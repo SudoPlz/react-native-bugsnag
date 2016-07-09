@@ -195,7 +195,7 @@ http://docs.bugsnag.com/platforms/ios-objc/symbolication-guide/
 - [ ] Handle different handled exceptions in JS.
 - [x] Show line numbers (and method names?) in JS errors.
 - [ ] Create some nice graphics for this README.
-- [ ] Test RNPM installation process.
+- [x] Test RNPM installation process.
 - [ ] Submit to js.coach and Bugsnag.
 - [x] Fully integrate with Android.
 
