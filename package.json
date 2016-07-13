@@ -1,6 +1,6 @@
 {
 	"name": "react-native-bugsnag",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "Community-created Bugsnag package for React Native. It consumes the Bugsnag API to report errors from both the React Native (Javascript) environment AND the native (Obj-C or Java) environment.",
 	"nativePackage": true,
 	"homepage": "https://github.com/joshuapinter/react-native-bugsnag",
