@@ -182,11 +182,11 @@ The third parameter is the severity of the notification, it can be one of the fo
 
 
 
-## Symbolication
+## Source maps
 
-This is an important part of the process in order to get the actual method names and line numbers of the exceptions from iOS.
+In order to get a readable stacktrace with the exact place the error took place all you need to do is  [create sourcemaps for your app](http://stackoverflow.com/questions/34715106/how-to-added-sourcemap-in-react-native-for-production), then [upload them to bugsnag](http://docs.bugsnag.com/api/js-source-map-upload/#uploading-source-maps)  and then make your project of **type Javascript** in the bugsnag dashboard, (you do that from their Settings screen). I did that and now I get a translated stacktrace I can read.
 
-http://docs.bugsnag.com/platforms/ios-objc/symbolication-guide/
+
 
 
 ## TODO
@@ -195,7 +195,7 @@ http://docs.bugsnag.com/platforms/ios-objc/symbolication-guide/
 - [ ] Handle different handled exceptions in JS.
 - [x] Show line numbers (and method names?) in JS errors.
 - [ ] Create some nice graphics for this README.
-- [x] Test RNPM installation process.
+- [ ] Test RNPM installation process.
 - [ ] Submit to js.coach and Bugsnag.
 - [x] Fully integrate with Android.
 
