@@ -162,6 +162,16 @@ At that point you have basic error reporting functionality working. Any unhandle
   ```
   
 
+
+
+#### Setting the identifier for the user at some other point in code:
+
+This will let you know more details about the person that got the crash.
+
+```js
+  Bugsnag.setIdentifier("aUserId", "aUserEmail", "userFullname");
+  ```
+
 #### Handled errors (Manual dispatch):
 
 You can manually create an exception using the following command:
