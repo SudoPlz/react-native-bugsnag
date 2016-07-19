@@ -26,10 +26,12 @@ import com.bugsnag.android.Severity;
 
 class RNBugsnagModule extends ReactContextBaseJavaModule {
     private Context context;
+    private Boolean suppressDev;
 
     public RNBugsnagModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.context = reactContext;
+        suppressDev = false;
         Bugsnag.init(reactContext);
     }
 
@@ -54,7 +56,12 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void reportException(String errorMessage, ReadableArray stacktrace, Integer exceptionId, ReadableMap otherData, Boolean isFatal, Promise promise) {
         //This gets called whenever a js error gets thrown
-        
+
+        if(suppressDev==true){
+            promise.reject("0","RNBugsnag won't report errors on dev mode, use setSuppressDebug to set suppress to false in order to use it on dev.");
+            return;
+        }
+
         BugsnagStack st = new BugsnagStack(stacktrace);
         
         Error error = new Error(errorMessage);

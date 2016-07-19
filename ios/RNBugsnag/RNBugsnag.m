@@ -2,7 +2,12 @@
 
 #import <Bugsnag/Bugsnag.h>
 
+
+
+
 @implementation RNBugsnag
+
+@synthesize suppressDev;
 
 RCT_EXPORT_MODULE();
 
@@ -16,15 +21,24 @@ RCT_EXPORT_METHOD(notify:(NSString *)exceptionTitle
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
-    //    #ifdef DEBUG
-    //        reject(@"RNBugsnag won't report errors on dev mode");
-    //        return;
-    //    #endif
+    
+    if(self.suppressDev==YES){
+        reject(0, @"RNBugsnag won't report errors on dev mode, use setSuppressDebug to set suppress to false in order to use it on dev.", @{});
+        return;
+    }
     [Bugsnag notify:[NSException exceptionWithName:exceptionTitle reason:exceptionReason userInfo:@{}] withData:otherData atSeverity:severity];
     resolve(@"Done");
 }
 
 
+
+RCT_EXPORT_METHOD(setSuppressDebug:(BOOL) suppress
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+    self.suppressDev = suppress;
+    resolve(@"Done");
+}
 
 
 
@@ -36,10 +50,10 @@ RCT_EXPORT_METHOD(setIdentifier:(NSString *)userId
 {
         //This gets called whenever setIdentifier is invoked from javascript
 
-//    #ifdef DEBUG
-//        reject(@"RNBugsnag won't report errors on dev mode");
-//        return;
-//    #endif
+    if(self.suppressDev==YES){
+        reject(0, @"RNBugsnag won't report errors on dev mode, use setSuppressDebug to set suppress to false in order to use it on dev.", @{});
+        return;
+    }
     [[Bugsnag configuration] setUser:userId withName:fullName andEmail:email];
 
     resolve(@"Done");
@@ -61,11 +75,10 @@ RCT_EXPORT_METHOD(reportException:(NSString *)errorMessage
 
     //This gets called whenever a js error gets thrown
 
-//    #ifdef DEBUG
-//        reject(@"RNBugsnag won't report errors on dev mode");
-//        return;
-//    #endif
-
+    if(self.suppressDev==YES){
+        reject(0, @"RNBugsnag won't report errors on dev mode, use setSuppressDebug to set suppress to false in order to use it on dev.", @{});
+        return;
+    }
 
 
     NSMutableArray *stringFrameArray = [[NSMutableArray alloc] init];
@@ -100,10 +113,18 @@ RCT_EXPORT_METHOD(reportException:(NSString *)errorMessage
 
 
 
-+ (void) init{
-    [Bugsnag startBugsnagWithApiKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BUGSNAG_API_KEY"]];
+
+
++ (RNBugsnag*)init
+{
+    static RNBugsnag *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[RNBugsnag alloc] init];
+        // Do any other initialisation stuff here
+        sharedInstance.suppressDev = false;
+        [Bugsnag startBugsnagWithApiKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BUGSNAG_API_KEY"]];
+    });
+    return sharedInstance;
 }
-
-
-
 @end
