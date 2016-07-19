@@ -48,12 +48,8 @@ RCT_EXPORT_METHOD(setIdentifier:(NSString *)userId
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
-        //This gets called whenever setIdentifier is invoked from javascript
+    //This gets called whenever setIdentifier is invoked from javascript
 
-    if(self.suppressDev==YES){
-        reject(0, @"RNBugsnag won't report errors on dev mode, use setSuppressDebug to set suppress to false in order to use it on dev.", @{});
-        return;
-    }
     [[Bugsnag configuration] setUser:userId withName:fullName andEmail:email];
 
     resolve(@"Done");
