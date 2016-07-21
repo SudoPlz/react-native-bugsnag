@@ -108,7 +108,16 @@ RCT_EXPORT_METHOD(reportException:(NSString *)errorMessage
 }
 
 
-
+- (void)notifyWithTitle: (NSString *)exceptionTitle
+              andReason:(NSString *)exceptionReason
+           withSeverity:(NSString *)severity
+           andOtherData:(NSDictionary *) otherData
+{
+    if(self.suppressDev==YES){
+        return;
+    }
+    [Bugsnag notify:[NSException exceptionWithName:exceptionTitle reason:exceptionReason userInfo:@{}] withData:otherData atSeverity:severity];
+}
 
 
 + (RNBugsnag*)init
