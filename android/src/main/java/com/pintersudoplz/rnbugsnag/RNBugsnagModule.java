@@ -83,6 +83,13 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
         promise.resolve("Done!");
     }
 
+    @ReactMethod
+    public void setSuppressDebug(Boolean suppress, Promise promise) {
+        //This gets called whenever setSuppressDebug is invoked from javascript
+        suppressDev = suppress;
+        promise.resolve("Done!");
+    }
+
 }
 
 
