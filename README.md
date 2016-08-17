@@ -224,7 +224,8 @@ class AnExampleClass {
 
 
 ## TODO
-
+- [x] Support iOS.
+- [x] Support Android.
 - [x] Configure Bugsnag from JS.
 - [x] Handle different handled exceptions in JS.
 - [x] Show line numbers (and method names?) in JS errors.
