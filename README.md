@@ -200,10 +200,33 @@ In order to get a readable stacktrace with the exact place the error took place 
 
 
 
+##Example code:
+```js
+
+import RNBugsnag from 'react-native-bugsnag';
+
+class AnExampleClass {
+  /**
+   * ## Constructor
+   */
+  constructor( props ) {
+
+    RNBugsnag({suppressDevErrors:false, identifier:{userId: "aUserId", userEmail:"anEmail@domain.com", userFullname:"aFullName"}});
+
+    setTimeout(function(){
+      RNBugsnag().notify(exceptionName, reason, type); 
+    }, 3000);
+
+  }
+};
+
+```
+
+
 ## TODO
 
 - [x] Configure Bugsnag from JS.
-- [ ] Handle different handled exceptions in JS.
+- [x] Handle different handled exceptions in JS.
 - [x] Show line numbers (and method names?) in JS errors.
 - [ ] Create some nice graphics for this README.
 - [ ] Test RNPM installation process.
