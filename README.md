@@ -232,7 +232,7 @@ class AnExampleClass {
 - [ ] Create some nice graphics for this README.
 - [ ] Test RNPM installation process.
 - [ ] Submit to js.coach and Bugsnag.
-- [x] Fully integrate with Android.
+
 
 
 [android-installation]: http://docs.bugsnag.com/platforms/android/#installation
