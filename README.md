@@ -214,7 +214,7 @@ class AnExampleClass {
     RNBugsnag({suppressDevErrors:false, identifier:{userId: "aUserId", userEmail:"anEmail@domain.com", userFullname:"aFullName"}});
 
     setTimeout(function(){
-      RNBugsnag().notify(exceptionName, reason, type); 
+      RNBugsnag().notify("WhateverError", "This error was just meant to be.", "error"); 
     }, 3000);
 
   }
