@@ -51,7 +51,7 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
   c. Add your BUSNAG Api Key inside the Info.Plist like so:
   
   	Add a new entry with a key of: `BUGSNAG_API_KEY` and a value of your Bugsnag API KEY ([Usually found within your project here](https://bugsnag.com/settings/)).
-  	Opening the `Info.Plist` with a text editor your addition should look like this:
+  	Opening the `Info.Plist` with a texBt editor your addition should look like this:
   	
   	```
   	<key>BUGSNAG_API_KEY</key>
@@ -136,12 +136,12 @@ Enjoy!
 
 
   ```js
-  Bugsnag();
+  Bugsnag();   //This initializes the singleton (CAUTION: The new keyword is never used with Bugsnag). 
   ```
 
-Congratulations!! 
+Congratulations!! You just initialized RNBugsnag. Note that we never used the `new` keyword anywhere. Thats because Bugsnag() returns the same instance of the singleton no matter how many times you call it like so.
 
-At that point you have basic error reporting functionality working. Any unhandled javascript or native errors thrown will be reported to Bugsnag.
+At that point you have basic native error reporting functionality working. Any unhandled javascript or native errors thrown will be reported to Bugsnag without any more lines of code.
 
 
 
