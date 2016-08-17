@@ -162,6 +162,7 @@ At that point you have basic error reporting functionality working. Any unhandle
   ```
   
 
+After you've passed options to the constructor once, those options remain unchanged no matter how many times you call the constructor after that (`Bugsnag` is a singleton). The only way to change those options from that point on is using setter methods.
 
 
 #### Setting the identifier for the user at some other point in code:
@@ -169,7 +170,7 @@ At that point you have basic error reporting functionality working. Any unhandle
 This will let you know more details about the person that got the crash.
 
 ```js
-  Bugsnag.setIdentifier("aUserId", "aUserEmail", "userFullname");
+  Bugsnag().setIdentifier("aUserId", "aUserEmail", "userFullname");
   ```
 
 #### Handled errors (Manual dispatch):
@@ -177,7 +178,7 @@ This will let you know more details about the person that got the crash.
 You can manually create an exception using the following command:
 
   ```js
-  Bugsnag.notify("TestExceptionName", "TestExceptionReason", "error");
+  Bugsnag().notify("TestExceptionName", "TestExceptionReason", "error");
   ```
 
 The third parameter is the severity of the notification, it can be one of the following:
