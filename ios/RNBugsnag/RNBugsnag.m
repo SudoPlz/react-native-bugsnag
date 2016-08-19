@@ -72,7 +72,7 @@ RCT_EXPORT_METHOD(reportException:(NSString *)errorMessage
     //This gets called whenever a js error gets thrown
 
     if(self.suppressDev==YES){
-        reject(0, @"RNBugsnag won't report errors on dev mode, use setSuppressDebug to set suppress to false in order to use it on dev.", @{});
+        reject(0, @"RNBugsnag won't report errors on dev mode, use setSuppressDebug to set suppress to false in order to use it on dev.", nil);
         return;
     }
 
