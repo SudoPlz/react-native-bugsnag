@@ -16,7 +16,7 @@ First of all install RNBugsnag:
 
 1. Install the official iOS Bugsnag sdk into your app according to their **[iOS instructions][ios-installation]**.
    
-   I chose the `Cocoapods` way meaning I just created a podfile and added `pod 'Bugsnag'` in it.
+   I chose the `Cocoapods` way meaning I just created a podfile in my projects iOS dir, added `pod 'Bugsnag'` in the podfile, and ran `pod install`.
   
 2. In your `AppDelegate.m` file, add the following code changes:
 
