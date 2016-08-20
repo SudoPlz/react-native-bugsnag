@@ -9,10 +9,8 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 ### iOS
 
 1. Install the official iOS Bugsnag sdk into your app according to their **[iOS instructions][ios-installation]**.
-
-   Ensure that **[Symbolication](#symbolication)** is properly setup in your project as well.
    
-   I used the `carthage` way and ended up with a `Bugsnag.framework` file.
+   I chose the `Cocoapods` way meaning I just created a podfile and added `pod 'Bugsnag'` in it.
 
 2. Install the React Native Bugsnag package:
 
@@ -58,17 +56,11 @@ _Although this is not affiliated with Bugsnag directly, we do have [their suppor
 	<string>whatever_your_api_key_is</string>
 	```
   
-  d. Add `Bugsnag` to the RNBugsnag library. I did this by dragging the `Bugsnag.framework` I made in step 1 to my RNBugsnag module target.
+  d. (Do this step ONLY if you installed using **Carthage**.) Add `Bugsnag` to the RNBugsnag library. I did this by dragging the `Bugsnag.framework` I made in step 1 to my RNBugsnag module target.
+  
   
 
-#### By that point you should be ok
-If you still want to check if things went well, 
 
-- You should have the `RNBugsnag.xcodeproj` within your main project (as a direct dependency coming from `./node_modules/react-native-bugsnag/ios/RNBugsnag.xcodeproj`)
-- You should have `$(SRCROOT)/../node_modules/react-native-bugsnag/ios/RNBugsnag` within your Project-->Target-->Build Settings--> Header Search Paths.
-- You should have `libRNBugsnag.a` linked to your project, check that on Project-->Target-->General-->Linked Frameworks and Libraries and see if you can find `libRNBugsnag.a`
-
-Enjoy!
 
   
   
