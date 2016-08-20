@@ -2,25 +2,23 @@
 
 Easily add **[Bugsnag](https://bugsnag.com/)** exception monitoring support to your React Native application.
 
-_Although this is not affiliated with Bugsnag directly, we do have [their support](https://twitter.com/bugsnag/status/749027008085045252)._
+_Although this is not affiliated with Bugsnag directly, we do have [(some of) their support](https://twitter.com/bugsnag/status/749027008085045252)._
 
 ## Installation
+
+First of all install RNBugsnag:
+
+  ```bash
+  rnpm install --save react-native-bugsnag
+  ```
 
 ### iOS
 
 1. Install the official iOS Bugsnag sdk into your app according to their **[iOS instructions][ios-installation]**.
    
    I chose the `Cocoapods` way meaning I just created a podfile and added `pod 'Bugsnag'` in it.
-
-2. Install the React Native Bugsnag package:
-
-  ```bash
-  rnpm install --save react-native-bugsnag
-  ```
-
-  _(Make sure to restart your package manager afterwards.)_
   
-3. In your `AppDelegate.m` file, add the following code changes:
+2. In your `AppDelegate.m` file, add the following code changes:
 
   a. Import our RNBugsnag library:
 
