@@ -49,7 +49,17 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
         //This gets called whenever setIdentifier is invoked from javascript
         
         Bugsnag.setUser(userId, email, fullName);
+        promise.resolve("Done!");
+    }
 
+    @ReactMethod
+    public void notify(String exceptionTitle, String exceptionReason, String severity, Object otherData) {
+        //This gets called whenever notify is invoked from javascript
+
+        MetaData metaData = new MetaData();
+        //TODO: Convert otherData to metaData
+        Throwable error = new Throwable(String exceptionTitle, Throwable exceptionReason);
+        Bugsnag.notify(error, severity, metaData);
         promise.resolve("Done!");
     }
 
