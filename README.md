@@ -9,7 +9,7 @@ _Although this is not affiliated with Bugsnag directly, we do have [(some of) th
 First of all install RNBugsnag:
 
   ```bash
-  rnpm install --save react-native-bugsnag
+  rnpm install react-native-bugsnag
   ```
 
 ### iOS

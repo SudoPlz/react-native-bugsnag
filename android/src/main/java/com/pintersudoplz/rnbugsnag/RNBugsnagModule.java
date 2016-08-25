@@ -47,19 +47,36 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void setIdentifier(String userId, String email, String fullName, Promise promise) {
         //This gets called whenever setIdentifier is invoked from javascript
-        
+
         Bugsnag.setUser(userId, email, fullName);
         promise.resolve("Done!");
     }
 
     @ReactMethod
-    public void notify(String exceptionTitle, String exceptionReason, String severity, Object otherData) {
+    public void notify(String exceptionTitle, String exceptionReason, String severity, ReadableMap otherData, Promise promise) {
         //This gets called whenever notify is invoked from javascript
 
+        if(exceptionTitle=="" || exceptionTitle==null){
+            promise.reject("0","RNBugsnag cannot notify using a blank exceptionTitle, please give us a valid string. ");
+            return;
+        }
+
         MetaData metaData = new MetaData();
+//        if(otherData!=null){
+//        }
         //TODO: Convert otherData to metaData
-        Throwable error = new Throwable(String exceptionTitle, Throwable exceptionReason);
-        Bugsnag.notify(error, severity, metaData);
+
+        Error error = new Error(exceptionTitle+" :: "+exceptionReason);
+
+        Severity curSev;
+        if(severity=="error"){
+            curSev = Severity.ERROR;
+        }else if(severity=="warning") {
+            curSev = Severity.WARNING;
+        }else{
+            curSev = Severity.INFO;
+        }
+        Bugsnag.notify(error, curSev, metaData);
         promise.resolve("Done!");
     }
 
@@ -73,7 +90,7 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
         }
 
         BugsnagStack st = new BugsnagStack(stacktrace);
-        
+
         Error error = new Error(errorMessage);
         error.setStackTrace(st.getStackTrace());
 
@@ -86,7 +103,7 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
         }else{
             Bugsnag.notify(error, Severity.WARNING, metaData);
         }
-        
+
 
 
 
