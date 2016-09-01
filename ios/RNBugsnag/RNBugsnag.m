@@ -21,9 +21,9 @@ RCT_EXPORT_METHOD(notify:(NSString *)exceptionTitle
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
-    
+
     if(self.suppressDev==YES){
-        reject(0, @"RNBugsnag won't report errors on dev mode, use setSuppressDebug to set suppress to false in order to use it on dev.", @{});
+        reject(0, @"RNBugsnag won't report errors on dev mode, use setSuppressDebug to set suppress to false in order to use it on dev.", nil);
         return;
     }
     [Bugsnag notify:[NSException exceptionWithName:exceptionTitle reason:exceptionReason userInfo:@{}] withData:otherData atSeverity:severity];
