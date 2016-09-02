@@ -6,7 +6,12 @@ _Although this is not affiliated with Bugsnag directly, we do have [(some of) th
 
 ## Installation
 
-First of all install RNBugsnag:
+First set up one or more projects in Bugsnag. You can either use three separate projects
+(javascript, ios and java) to logically separate the stack traces generated on different
+platforms, or you can create a single javascript project for everything. Bugsnag claims to 
+be working on a hybrid project type that can detect different types of stack traces better.
+
+Then install RNBugsnag:
 
   ```bash
   rnpm install react-native-bugsnag
