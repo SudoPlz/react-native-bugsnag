@@ -4,15 +4,41 @@ Easily add **[Bugsnag](https://bugsnag.com/)** exception monitoring support to y
 
 _Although this is not affiliated with Bugsnag directly, we do have [(some of) their support](https://twitter.com/bugsnag/status/749027008085045252)._
 
-## Installation
+## Installation 
+###Step 1
 
-First of all install RNBugsnag:
+First of all go to the [Busnag Dashboard](https://app.bugsnag.com/) and create one or more projects (read on to decide how many you need). 
+You can:
+ - either create a single project (of type javascript) that handles errors from every source (all iOS, Android, and react-native). (This is my preferred method)
+ - or you can use two separate projects (of types ios and java) to logically separate the stack traces generated on each platform respectively.
+
+
+p.s: One of the guys from Bugsnag told me that in time they plan to add a project of type `hybrid`, that would have several benefits.
+
+####More details about the lines above - if not interested move to Step 2
+
+Below you can see how each error is handled based on what kind of project you setup in the Bugsnag dashboard.
+
+ProjectTypes / Platform error | iOS native induced error | Android native induced error  | React-Native javascript induced error
+| ------------- | :-------------: | :-------------: | :-------------: |
+| Bugsnag iOS project type  | :white_check_mark:   | :x:   | :x: |
+| Bugsnag Android project  | :x:   | :white_check_mark:   | :x:  |
+| Bugsnag javascript project  (one project for all errors) | :white_check_mark:   | :white_check_mark:   | :white_check_mark:  |
+
+
+p.s: Bugsnag claims to be working on a hybrid project type that can detect different types of stack traces better.
+
+###Step 2
+
+Install RNBugsnag (the javascript part of our library):
 
   ```bash
-  rnpm install react-native-bugsnag
+  npm install react-native-bugsnag --save
   ```
+  
+  or you could try to install it using `rnpm` but I've never tested it.
 
-### iOS
+### Step 3 - iOS (If needed)
 
 1. Install the official iOS Bugsnag sdk into your app according to their **[iOS instructions][ios-installation]**.
    
@@ -64,7 +90,7 @@ First of all install RNBugsnag:
   
 
 
-### Android
+### Step 4 - Android (If needed)
 
 1. Go to your settings.gradle and add the following lines after 
  	
@@ -110,6 +136,9 @@ First of all install RNBugsnag:
     }
 	```
 
+### Congrats you're ready! 
+
+![](https://media.giphy.com/media/10Y2YMUNmQa9a0/giphy.gif)
 
 ## Usage
 
@@ -219,7 +248,6 @@ class AnExampleClass {
 - [x] Configure Bugsnag from JS.
 - [x] Handle different handled exceptions in JS.
 - [x] Show line numbers (and method names?) in JS errors.
-- [ ] Create some nice graphics for this README.
 - [ ] Test RNPM installation process.
 - [ ] Submit to js.coach and Bugsnag.
 
