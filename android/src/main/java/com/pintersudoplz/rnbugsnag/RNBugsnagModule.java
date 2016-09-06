@@ -111,6 +111,30 @@ class RNBugsnagModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void leaveBreadcrumb(String message, Promise promise) {
+        Bugsnag.leaveBreadcrumb(message);
+        promise.resolve("Done!");
+    }
+
+    @ReactMethod
+    public void setContext(String context, Promise promise) {
+        Bugsnag.setContext(context);
+        promise.resolve("Done!");
+    }
+
+    @ReactMethod
+    public void setReleaseStage(String releaseStage, Promise promise) {
+        Bugsnag.setReleaseStage(releaseStage);
+        promise.resolve("Done!");
+    }
+
+    @ReactMethod
+    public void setAppVersion(String appVersion, Promise promise) {
+        Bugsnag.setAppVersion(appVersion);
+        promise.resolve("Done!");
+    }
+
+    @ReactMethod
     public void setSuppressDebug(Boolean suppress, Promise promise) {
         //This gets called whenever setSuppressDebug is invoked from javascript
         suppressDev = suppress;

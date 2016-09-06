@@ -30,7 +30,37 @@ RCT_EXPORT_METHOD(notify:(NSString *)exceptionTitle
     resolve(@"Done");
 }
 
+RCT_EXPORT_METHOD(leaveBreadcrumb: (NSString *) message
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+    [Bugsnag leaveBreadcrumbWithMessage: message];
+    resolve(@"Done");
+}
 
+RCT_EXPORT_METHOD(setContext: (NSString *) context
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+    [Bugsnag configuration].context = context;
+    resolve(@"Done");
+}
+
+RCT_EXPORT_METHOD(setReleaseStage: (NSString *) releaseStage
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+    [Bugsnag configuration].releaseStage = releaseStage;
+    resolve(@"Done");
+}
+
+RCT_EXPORT_METHOD(setAppVersion: (NSString *) appVersion
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+    [Bugsnag configuration].appVersion = appVersion;
+    resolve(@"Done");
+}
 
 RCT_EXPORT_METHOD(setSuppressDebug:(BOOL) suppress
                   resolver:(RCTPromiseResolveBlock)resolve
