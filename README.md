@@ -190,7 +190,41 @@ This will let you know more details about the person that got the crash.
 
 ```js
   Bugsnag().setIdentifier("aUserId", "aUserEmail", "userFullname");
-  ```
+```
+
+#### Logging breadcrumbs
+
+> In order to understand what happened in your application before each crash, it can be helpful to leave short log statements that we call breadcrumbs. The last several breadcrumbs are attached to a crash to help diagnose what events lead to the error. – Bugsnag
+
+```js
+  Bugsnag().leaveBreadcrumb("some actions were done")
+```
+
+#### Setting Release Stage
+
+> In order to distinguish between errors that occur in different stages of the application release process a release stage is sent to Bugsnag when an error occurs – Bugsnag
+
+```js
+  Bugsnag().setReleaseStage("staging");
+```
+
+#### Setting Context
+
+> Bugsnag uses the concept of “contexts” to help display and group your errors. Contexts represent what was happening in your application at the time an error occurs. – Bugsnag
+
+```js
+  Bugsnag().setContext("loginPage");
+```
+
+#### Setting AppVersion
+
+> If you want to manually track in which versions of your application each exception happens, you can set appVersion. – Bugsnag
+
+This will be useful when using OTA updates.
+
+```js
+  Bugsnag().setAppVersion(`${appBinaryVersion}(${codepushBundleVersion})`);
+```
 
 #### Handled errors (Manual dispatch):
 
