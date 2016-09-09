@@ -46,10 +46,14 @@ Install RNBugsnag (the javascript part of our library):
   
 2. In your `AppDelegate.m` file, add the following code changes:
 
-  a. Import our RNBugsnag library:
+  a. Import our RNBugsnag library within your `AppDelegate.m` file:
 
   ```objective-c
-  #import <RNBugsnag/RNBugsnag.h>  // Add this line.
+  // Add just ONE of the following lines:
+  
+  #import "RNBugsnag.h" // if installed by using Cocoapods
+  //OR
+  #import <RNBugsnag/RNBugsnag.h>  // if installed by using Carthage
 
   @implementation AppDelegate
     
