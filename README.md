@@ -101,7 +101,7 @@ Install RNBugsnag (the javascript part of our library):
 	project(':react-native-bugsnag').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-bugsnag/android')
 	```
 
-2. Go to your app.gradle and add the following line in the end:
+2. Go to your app/settings.gradle and add the following line in the end:
 	```java
 	dependencies {
 	    compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -118,7 +118,7 @@ Install RNBugsnag (the javascript part of our library):
 	<meta-data android:name="com.bugsnag.android.API_KEY" android:value="YOUR_API_KEY"/>
 	```
 	
-4. Go to your `MainActivity.java` and add the following code:
+4. Go to your `MainApplication.java` and add the following code:
 
 	```
 	import com.pintersudoplz.rnbugsnag.RNBugsnagPackage;
