@@ -159,10 +159,10 @@ Install RNBugsnag (the javascript part of our library):
 
 
   ```js
-  Bugsnag();   //This initializes the singleton (CAUTION: The new keyword is never used with Bugsnag). 
+let bugsnag = new Bugsnag({suppressDevErrors:false});   //This initializes the singleton
   ```
 
-Congratulations!! You just initialized RNBugsnag. Note that we never used the `new` keyword anywhere. Thats because Bugsnag() returns the same instance of the singleton no matter how many times you call it like so.
+Congratulations!! You just initialized RNBugsnag. Thats because Bugsnag() returns the same instance of the singleton no matter how many times you call it like so.
 
 At that point you have basic native error reporting functionality working. Any unhandled javascript or native errors thrown will be reported to Bugsnag without any more lines of code.
 
@@ -175,15 +175,15 @@ At that point you have basic native error reporting functionality working. Any u
   - You can suppress all the outgoing Error reports to bugsnag by setting `suppressDevErrors` to true and passing it to the constructor, like so:
 
   ```js
-    Bugsnag({suppressDevErrors:true});
+    let bugsnag = new Bugsnag({suppressDevErrors:true});
   ```
   
   - You can set identification data for the current user while initiating BugSnag by passing the `identifier` object to the constructor, like so:
   
   ```js
-    Bugsnag({identifier:{userId: "aUserId", userEmail:"anEmail@domain.com", userFullname:"aFullName"}})
+    let bugsnag = new Bugsnag({identifier:{userId: "aUserId", userEmail:"anEmail@domain.com", userFullname:"aFullName"}, suppressDevErrors:true})
   ```
-  
+
 
 After you've passed options to the constructor once, those options remain unchanged no matter how many times you call the constructor after that (`Bugsnag` is a singleton). The only way to change those options from that point on is using setter methods.
 
@@ -193,7 +193,7 @@ After you've passed options to the constructor once, those options remain unchan
 This will let you know more details about the person that got the crash.
 
 ```js
-  Bugsnag().setIdentifier("aUserId", "aUserEmail", "userFullname");
+    bugsnag.setIdentifier("aUserId", "aUserEmail", "userFullname");
 ```
 
 #### Logging breadcrumbs
@@ -201,7 +201,7 @@ This will let you know more details about the person that got the crash.
 > In order to understand what happened in your application before each crash, it can be helpful to leave short log statements that we call breadcrumbs. The last several breadcrumbs are attached to a crash to help diagnose what events lead to the error. – Bugsnag
 
 ```js
-  Bugsnag().leaveBreadcrumb("some actions were done")
+  bugsnag.leaveBreadcrumb("some actions were done")
 ```
 
 #### Setting Release Stage
@@ -209,7 +209,7 @@ This will let you know more details about the person that got the crash.
 > In order to distinguish between errors that occur in different stages of the application release process a release stage is sent to Bugsnag when an error occurs – Bugsnag
 
 ```js
-  Bugsnag().setReleaseStage("staging");
+  bugsnag.setReleaseStage("staging");
 ```
 
 #### Setting Context
@@ -217,7 +217,7 @@ This will let you know more details about the person that got the crash.
 > Bugsnag uses the concept of “contexts” to help display and group your errors. Contexts represent what was happening in your application at the time an error occurs. – Bugsnag
 
 ```js
-  Bugsnag().setContext("loginPage");
+  bugsnag.setContext("loginPage");
 ```
 
 #### Setting AppVersion
@@ -227,7 +227,7 @@ This will let you know more details about the person that got the crash.
 This will be useful when using OTA updates.
 
 ```js
-  Bugsnag().setAppVersion(`${appBinaryVersion}(${codepushBundleVersion})`);
+  bugsnag.setAppVersion(`${appBinaryVersion}(${codepushBundleVersion})`);
 ```
 
 #### Handled errors (Manual dispatch):
@@ -235,7 +235,7 @@ This will be useful when using OTA updates.
 You can manually create an exception using the following command:
 
   ```js
-  Bugsnag().notify("TestExceptionName", "TestExceptionReason", "error");
+  bugsnag.notify("TestExceptionName", "TestExceptionReason", "error");
   ```
 
 The third parameter is the severity of the notification, it can be one of the following:
@@ -268,10 +268,10 @@ class AnExampleClass {
    */
   constructor( props ) {
 
-    RNBugsnag({suppressDevErrors:false, identifier:{userId: "aUserId", userEmail:"anEmail@domain.com", userFullname:"aFullName"}});
+    let bugsnag = new RNBugsnag({suppressDevErrors:false, identifier:{userId: "aUserId", userEmail:"anEmail@domain.com", userFullname:"aFullName"}});
 
     setTimeout(function(){
-      RNBugsnag().notify("WhateverError", "This error was just meant to be.", "error"); 
+      bugsnag.notify("WhateverError", "This error was just meant to be.", "error"); 
     }, 3000);
 
   }
