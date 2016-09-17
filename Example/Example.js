@@ -23,13 +23,13 @@ export default class Example extends Component {
   constructor(props){
     super(props);
     // console.log(parseErrorStack());
-    RNBugsnag();  //init so that we start listening to js errors
+    let bugsnag = new RNBugsnag({suppressDevErrors:false});  //init so that we start listening to js errors
 
-    RNBugsnag().setReleaseStage("staging");
-    RNBugsnag().setContext("examplePage");
+    bugsnag.setReleaseStage("staging");
+    bugsnag.setContext("examplePage");
 
     const codepushBundleVersion = "42";
-    RNBugsnag().setAppVersion(`1.0.1(${codepushBundleVersion})`)
+    bugsnag.setAppVersion(`1.0.1(${codepushBundleVersion})`)
   }
 
   render() {
@@ -47,7 +47,13 @@ export default class Example extends Component {
         <Button onPress={() => { throw new Error("Javascript error test successful!"); } }
             text={`Test crash ${Platform.OS}`} />
 
-        <Button onPress={() => { RNBugsnag().leaveBreadcrumb(`Breadcrumb button pressed!`); } }
+        <Button onPress={() => { 
+          /* Caution: 
+            Any object passed to the constructor here will not be taken into account, 
+            since RNBugsnag is a singleton and has already been initialized in the Example constructor. 
+          */ 
+          new RNBugsnag().leaveBreadcrumb(`Breadcrumb button pressed!`); 
+        } }
             text={"Leave breadcrumb"} />
 
       </View>

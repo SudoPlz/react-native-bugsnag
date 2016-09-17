@@ -1,6 +1,6 @@
 {
 	"name": "react-native-bugsnag",
-	"version": "0.0.9",
+	"version": "1.0.0",
 	"description": "Community-created Bugsnag package for React Native. It consumes the Bugsnag API to report errors from both the React Native (Javascript) environment AND the native (Obj-C or Java) environment.",
 	"nativePackage": true,
 	"homepage": "https://github.com/joshuapinter/react-native-bugsnag",
@@ -16,8 +16,7 @@
 	    	"packageInstance": "new RNBugsnagPackage()"
 	    },
 	    "ios": {
-			"project": "ios/RNBugsnag.xcodeproj",
-			"sharedLibraries": ["RNBugsnag"]
+			"project": "ios/RNBugsnag.xcodeproj"
 		}
 	},
 	"license": "MIT",
