@@ -2,7 +2,7 @@
 
 #import <Bugsnag/Bugsnag.h>
 
-
+#define BUGSNAG_API_ID_DEF_LEN 32
 
 
 @implementation RNBugsnag
@@ -158,7 +158,16 @@ RCT_EXPORT_METHOD(reportException:(NSString *)errorMessage
         sharedInstance = [[RNBugsnag alloc] init];
         // Do any other initialisation stuff here
         sharedInstance.suppressDev = false;
-        [Bugsnag startBugsnagWithApiKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"BUGSNAG_API_KEY"]];
+        NSString* bugsnagID = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"BUGSNAG_API_KEY"];
+        
+        if(bugsnagID.length != BUGSNAG_API_ID_DEF_LEN){
+          @throw [NSException exceptionWithName:@"RNBugsnag: NO BUGSNAG ID PROVIDED"
+                               reason:@"Cannot initialize RNBugsnag, make sure you have added your bugsnag id to the Info.plist file within the BUGSNAG_API_KEY <string> value."
+                             userInfo:nil];
+        }else{
+          [Bugsnag startBugsnagWithApiKey:bugsnagID];  
+        }
+        
     });
     return sharedInstance;
 }
