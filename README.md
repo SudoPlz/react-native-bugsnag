@@ -17,7 +17,15 @@ Start with:
 Theres a quick guide [over to our wiki.](https://github.com/SudoPlz/react-native-bugsnag/wiki)
 
 ### Look ma, theres an working example too:
-[Check it out](https://github.com/SudoPlz/react-native-bugsnag/tree/master/Example)
+
+Its SUPER easy to run this example project.
+
+All you have to do after you've downloaded this project is:
+`cd Example`
+and `npm run setupIOS`
+and thats it, the console will ask you for your bugsnag project id, it will automatically set everything up and start Xcode, you don't have to move a finger.
+
+[Check it out here](https://github.com/SudoPlz/react-native-bugsnag/tree/master/Example)
 
 
 ### Enjoy!
