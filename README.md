@@ -75,3 +75,8 @@ Checklist:
 
 [android-installation]: http://docs.bugsnag.com/platforms/android/#installation
 [ios-installation]:     http://docs.bugsnag.com/platforms/ios-objc/#installation
+
+## Support
+If you like the component and want to support it, feel free to [donate any amount](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=3BXVM5VMADR3C&lc=GR&item_name=react%2dnative%2dbugsnag&item_number=rnbugsnag&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted) or help with issues.
+
+Thank you. 
