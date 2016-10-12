@@ -1,7 +1,5 @@
 import React from 'react-native';
 import stacktraceParser from 'stacktrace-parser';
-// import _ from 'underscore';
-
 
 const NativeBugsnag = React.NativeModules.RNBugsnag;
 
@@ -27,7 +25,7 @@ export function setup(props) {
 
     if (NativeBugsnag && ErrorUtils._globalHandler) {
         let defaultHandler = ErrorUtils.getGlobalHandler && ErrorUtils.getGlobalHandler() || ErrorUtils._globalHandler;
-        ErrorUtils.setGlobalHandler((e, isFatal) => {
+        ErrorUtils.setGlobalHandler((error, isFatal) => {
             let currentExceptionID = ++exceptionID;
             const stack = parseErrorStack(error);
             const reportExceptionPromise = NativeBugsnag.reportException(error.message, stack, currentExceptionID, {}, isFatal); //submit the exception to our native part
