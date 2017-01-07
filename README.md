@@ -1,5 +1,5 @@
-News:
-This library will no longer be maintained in favor of the [official Bugsnag library for react-native](https://github.com/bugsnag/bugsnag-react-native).
+# Unmaintained
+**This library will no longer be maintained in favor of the [official Bugsnag library for react-native](https://github.com/bugsnag/bugsnag-react-native).**
 
 # React Native Bugsnag [![npm version](https://badge.fury.io/js/react-native-bugsnag.svg)](https://badge.fury.io/js/react-native-bugsnag)
 
