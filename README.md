@@ -40,7 +40,7 @@ and thats it, the console will ask you for your bugsnag project id, it will auto
 ##Sample code:
 ```js
 
-import RNBugsnag from 'react-native-bugsnag';
+import * as RNBugsnag from 'react-native-bugsnag';
 
 class AnExampleClass {
   /**
@@ -48,7 +48,8 @@ class AnExampleClass {
    */
   constructor( props ) {
 
-    let bugsnag = new RNBugsnag({suppressDevErrors:false, identifier:{userId: "aUserId", userEmail:"anEmail@domain.com", userFullname:"aFullName"}});
+    //setup() must be only called once in the entire Application.
+    let bugsnag = RNBugsnag.setup({suppressDevErrors:false, identifier:{userId: "aUserId", userEmail:"anEmail@domain.com", userFullname:"aFullName"}});
 
     setTimeout(function(){
       bugsnag.notify("WhateverError", "This error was just meant to be.", "error"); 
@@ -60,10 +61,9 @@ class AnExampleClass {
 ```
 
 
-### Breaking changes to version 1.0.0
+### Breaking change
+Now Bugsnag is just exporting bunch of functions so just call setup once
 
-We now use `new Bugsnag()` instead of directly calling `Bugsnag()`.
-Note that even though we use the `new` keyword we're still receiving a singleton instance and thus it will only be used as a constructor the first time you call it.
 
 
 Checklist:
